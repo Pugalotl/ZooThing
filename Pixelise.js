@@ -16,8 +16,11 @@
         inter = setInterval(function () {
             var allImages = document.getElementsByTagName('img');
             for(var i = 0; i < allImages.length ; i++) {
-                var img_tag = allImages[i].src.split("/");
-                allImages[i].src = ("https://pugalotl.github.io/ZooThing/"+img_tag[img_tag.length - 1].split(".")[0].toLowerCase()+".png")
+                var source = allImages[i].src;
+                if (source.startsWith("https://firebasestorage.googleapis.com/v0/b/project-zoo-c893d.appspot.com")) {
+                    var img_tag = source.split("/");
+                    allImages[i].src = ("https://pugalotl.github.io/ZooThing/"+img_tag[img_tag.length - 1].split(".")[0].toLowerCase()+".png")
+                }
             }
         }, 500);
         var link = document.createElement('link');
@@ -28,5 +31,6 @@
         document.body.style.fontFamily = "Common Pixel, sans-serif";
 
     }
+
     // Your code here...
 })();
